@@ -28,8 +28,6 @@ fn get_bounds(line: str) bounds = {
 };
 
 export fn main() void = {
-	fmt::println("Day 4 1")!;
-
 	let overlaps: int = 0;
 
 	for (true) {
@@ -49,6 +47,6 @@ export fn main() void = {
 		};
 	};
 
-	fmt::printfln("Nb overlaps = {}", overlaps)!;
+	fmt::printf("{}", overlaps)!;
 };
 

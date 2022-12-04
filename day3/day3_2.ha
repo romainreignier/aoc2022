@@ -38,8 +38,6 @@ fn get_common_item(l1: str, l2: str, l3: str) rune = {
 };
 
 export fn main() void = {
-	fmt::println("Day 3 2")!;
-
 	let priorities: int = 0;
 
 	for (true) {
@@ -66,6 +64,6 @@ export fn main() void = {
 		priorities += priority;
 	};
 
-	fmt::printfln("Sum priorities = {}", priorities)!;
+	fmt::printf("{}", priorities)!;
 };
 

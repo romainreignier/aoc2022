@@ -86,8 +86,6 @@ fn compute_score(r1: role, expected_result: result) int = {
 };
 
 export fn main() void = {
-	fmt::println("Day 2 2")!;
-
 	let score: i64 = 0;
 
 	for (true) {
@@ -104,6 +102,6 @@ export fn main() void = {
 		};
 	};
 
-	fmt::printfln("Score = {}", score)!;
+	fmt::printf("{}", score)!;
 };
 

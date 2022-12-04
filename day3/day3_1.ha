@@ -39,8 +39,6 @@ fn get_shared_item(c1: str, c2: str) rune = {
 };
 
 export fn main() void = {
-	fmt::println("Day 3 1")!;
-
 	let priorities: int = 0;
 
 	for (true) {
@@ -58,6 +56,6 @@ export fn main() void = {
 		};
 	};
 
-	fmt::printfln("Sum priorities = {}", priorities)!;
+	fmt::printf("{}", priorities)!;
 };
 

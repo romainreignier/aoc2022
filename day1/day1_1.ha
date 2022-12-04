@@ -6,8 +6,6 @@ use strconv;
 use strings;
 
 export fn main() void = {
-	fmt::println("Day 1 2")!;
-
 	let max: i64 = 0;
 	let local_max: i64 = 0;
 
@@ -35,6 +33,6 @@ export fn main() void = {
 		};
 	};
 
-	fmt::printfln("Max = {}", max)!;
+	fmt::printf("{}", max)!;
 };
 

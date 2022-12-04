@@ -14,8 +14,6 @@ fn icmp(a: const *void, b: const *void) int = {
 };
 
 export fn main() void = {
-	fmt::println("Day 1 2")!;
-
 	let calories: []i64 = [];
 	defer free(calories);
 
@@ -48,6 +46,7 @@ export fn main() void = {
 	total += calories[len(calories) - 1];
 	total += calories[len(calories) - 2];
 	total += calories[len(calories) - 3];
-	fmt::printfln("Total top 3 = {}", total)!;
+
+	fmt::printf("{}", total)!;
 };
 
