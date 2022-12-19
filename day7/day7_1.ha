@@ -75,6 +75,4 @@ export fn main() void = {
 	for (let i = 0z; i < len(dirs); i += 1) {
 		fmt::fprintfln(os::stderr, "- {}: {}", dirs[i].name, dirs[i].dir_size)!;
 	};
-
-	// fmt::printf("{}", max)!;
 };
