@@ -32,7 +32,7 @@ fn role_from_rune(r: rune) role = {
 
 
 fn get_roles(line: str) (role, role) = {
-	const runes = strings::runes(line);
+	const runes = strings::torunes(line);
 	const p1 = runes[0];
 	const p2 = runes[2];
 	return (role_from_rune(p1), role_from_rune(p2));
@@ -91,11 +91,11 @@ export fn main() void = {
 	let score: i64 = 0;
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		if (len(line) > 0) {
 			const (r1, r2) = get_roles(line);

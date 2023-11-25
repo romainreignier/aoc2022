@@ -19,11 +19,11 @@ export fn main() void = {
 	let current_level = 0;
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield l;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		defer free(line);
 		let line_str = strings::fromutf8(line)!;

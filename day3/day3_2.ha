@@ -20,9 +20,9 @@ fn get_priority_from_rune(r: rune) int = {
 };
 
 fn get_common_item(l1: str, l2: str, l3: str) rune = {
-	const l1u = strings::runes(l1);
-	const l2u = strings::runes(l2);
-	const l3u = strings::runes(l3);
+	const l1u = strings::torunes(l1);
+	const l2u = strings::torunes(l2);
+	const l3u = strings::torunes(l3);
 	for (let i = 0z; i < len(l1u); i += 1) {
 		for (let j = 0z; j < len(l2u); j += 1) {
 			if (l1u[i] == l2u[j]) {
@@ -41,23 +41,23 @@ export fn main() void = {
 	let priorities: int = 0;
 
 	for (true) {
-		const l1 = match (bufio::scanline(os::stdin)) {
+		const l1 = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
-		const l2 = match (bufio::scanline(os::stdin)) {
+		const l2 = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
-		const l3 = match (bufio::scanline(os::stdin)) {
+		const l3 = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		const common = get_common_item(l1, l2, l3);
 		const priority = get_priority_from_rune(common);

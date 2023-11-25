@@ -10,11 +10,11 @@ export fn main() void = {
 	let local_max: i64 = 0;
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		if (len(line) == 0) {
 			if (local_max > max) {

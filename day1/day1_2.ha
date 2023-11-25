@@ -6,7 +6,7 @@ use sort;
 use strconv;
 use strings;
 
-fn icmp(a: const *void, b: const *void) int = {
+fn icmp(a: const *opaque, b: const *opaque) int = {
 	const a = *(a: const *int), b = *(b: const *int);
 	return if (a < b) -1
 		else if (a > b) 1
@@ -20,11 +20,11 @@ export fn main() void = {
 	let local_max: i64 = 0;
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		if (len(line) == 0) {
 			append(calories, local_max);

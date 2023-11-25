@@ -26,8 +26,8 @@ fn split_line(line: str) (str, str) = {
 };
 
 fn get_shared_item(c1: str, c2: str) rune = {
-	const c1u = strings::runes(c1);
-	const c2u = strings::runes(c2);
+	const c1u = strings::torunes(c1);
+	const c2u = strings::torunes(c2);
 	for (let i = 0z; i < len(c1u); i += 1) {
 		for (let j = 0z; j < len(c2u); j += 1) {
 			if (c1u[i] == c2u[j]) {
@@ -42,11 +42,11 @@ export fn main() void = {
 	let priorities: int = 0;
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield strings::fromutf8(l)!;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		if (len(line) > 0) {
 			const (c1, c2) = split_line(line);

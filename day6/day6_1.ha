@@ -26,11 +26,11 @@ fn add(b: []u8, n: u8) void = {
 };
 
 export fn main() void = {
-	const line = match (bufio::scanline(os::stdin)) {
+	const line = match (bufio::read_line(os::stdin)) {
 	case let l: []u8 => yield l;
 	case io::EOF => return;
 	case io::error =>
-		fmt::fatalf("scanline error");
+		fmt::fatalf("read_line error");
 	};
 	defer free(line);
 	let buf: [4]u8 = [0...];

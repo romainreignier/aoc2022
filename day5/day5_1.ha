@@ -2,7 +2,6 @@ use bufio;
 use fmt;
 use io;
 use os;
-use slices;
 use strconv;
 use strings;
 
@@ -19,11 +18,11 @@ export fn main() void = {
 	defer strings::freeall(lines);
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield l;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		defer free(line);
 		if (len(line) > 0) {
@@ -54,11 +53,11 @@ export fn main() void = {
 	print_stacks(stacks);
 
 	for (true) {
-		const line = match (bufio::scanline(os::stdin)) {
+		const line = match (bufio::read_line(os::stdin)) {
 		case let l: []u8 => yield l;
 		case io::EOF => break;
 		case io::error =>
-			fmt::fatalf("scanline error");
+			fmt::fatalf("read_line error");
 		};
 		defer free(line);
 		if (len(line) > 0) {
@@ -74,8 +73,8 @@ export fn main() void = {
 
 			for (let i = 0z; i < nb; i += 1) {
 				if (len(stacks[from]) > 0) {
-					slices::appendto(&stacks[to]: *[]void, size(u8), &stacks[from][len(stacks[from])-1]);
-					slices::deletefrom(&stacks[from]: *[]void, size(u8), len(stacks[from])-1, len(stacks[from]));
+					append(stacks[to], stacks[from][len(stacks[from])-1]);
+					delete(stacks[from][len(stacks[from])-1]);
 				};
 			};
 			//print_stacks(stacks);
